@@ -1,0 +1,43 @@
+---
+title: My Rmd document
+author: Bianca Zlavog
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: bookdown::html_document2
+bibliography: bibliography.bib
+---
+
+Here is an inline R calculation showing that 2+2=`r 2+2`
+
+```{r, starwars-plot, fig.cap = "A ggplot of starwars"}
+library(tidyverse)
+starwars %>% filter(species == "Human") %>% 
+  ggplot() +
+  aes(x=height, y = mass) + geom_point()
+```
+
+Figure \@ref(fig:starwars-plot) is shown above.
+
+```{r starwars-tbl}
+starwars %>%
+  filter(species == "Human") %>%
+  select(name, height, mass, homeworld) %>%
+  knitr::kable(caption = 'a knitr kable table of starwars data')
+
+```
+
+Table \@ref(tab:starwars-tbl) is shown above.
+
+
+```{r, yoda-fig, fig.cap = "Baby Yoda"}
+
+knitr::include_graphics("baby_yoda.png")
+```
+
+We can see in Figure \@ref(fig:yoda-fig) that Baby Yoda is very cute.
+
+
+Here is an in-text citation of [@DBLP:journals/corr/abs-1802-03311].
+
+
+# References cited
+
